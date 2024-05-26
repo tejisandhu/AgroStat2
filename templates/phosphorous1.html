@@ -1,0 +1,41 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Fertilizer Use Analysis</title>
+     </head>
+     <body>
+          <section class="container" style="padding-right: 15%">
+               <form method="POST" action class enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1 class="mt-5 display-3">Phosphorous Use Analysis</h1>
+                    <br />
+                    <p
+                         style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">Unlock
+                         insights on phosphorus use! Select a country to analyze
+                         its phosphorus fertilizer application per kilogram,
+                         converted to a per-hectare basis. This tool helps you
+                         compare usage patterns and identify optimization
+                         opportunities.</p>
+
+                    <select name="country"
+                         class="form-select form-select-lg mb-4">
+                         <option selected>Select a country</option>
+                         {% for i in data %}
+                         <option value="{{i}}">{{i}}</option>
+                         {% endfor %}
+                    </select>
+                    <button
+                         type="submit"
+                         class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto">
+                         Enter
+                    </button>
+               </form>
+          </section>
+     </body>
+</html>
+{% endblock %}

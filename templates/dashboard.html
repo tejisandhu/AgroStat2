@@ -1,0 +1,290 @@
+{% extends 'sidebar.html' %} {% block content %} {% load static %}
+<html>
+  <head>
+    <title></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'icofont/icofont.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'css/bootstrap.min.css' %}"
+    />
+
+    <style>
+      .logo-container {
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: calc(100% - 2px);
+          width: 101%;
+          height: 4px;
+          left: -0%;
+          background-color: #ffcc00;
+          transform-origin: center center;
+          transform: scaleX(0);
+
+          animation: line-animation 2s ease infinite alternate;
+        }
+
+        h2#page-logo {
+          font: bold 3rem "Arial", sans-serif;
+
+          animation: clip-path-reveal-1 2s ease infinite alternate;
+        }
+      }
+
+      @keyframes line-animation {
+        0% {
+          transform: scaleX(0);
+        }
+        15% {
+          transform: scaleX(0);
+        }
+        20%,
+        25% {
+          transform: scaleX(1);
+          top: calc(100% - 2px);
+        }
+        50% {
+          transform: scaleX(1);
+          top: 0px;
+        }
+        70% {
+          transform: scaleX(0.2);
+          top: 0px;
+        }
+        80%,
+        100% {
+          transform: scaleX(0.2);
+          top: 0px;
+        }
+      }
+
+      @keyframes clip-path-reveal-1 {
+        0%,
+        25% {
+          clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        }
+        50% {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-end m-3">
+      Welcome,<strong> {{user.name}}</strong>
+      {% if user.profile_picture %}
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+          alt="profile_picture"
+        />
+      </a>
+
+      {% endif %}
+
+      <!-- <h1
+        style="
+          text-align: left;
+          font-family: charlesworth;
+          color: #12171b;
+          margin-top: 10px;
+          margin-left: 5px;
+          font-weight: bold;
+          margin-left: -20px;
+        "
+      >
+        Welcome to AgroStat a Predictive And Analysis Dashboard
+      </h1> -->
+      <div class="logo-container mt-3" style="left: -5%">
+        <h2 id="page-logo">
+          Welcome to AgroStat a Predictive And Analysis Dashboard
+        </h2>
+      </div>
+    </div>
+
+    <!-- Column 1 -->
+    <div class="container mt-5">
+      <div
+        class="row"
+        style="background-color: #ffffff; margin-left: -8%; margin-right: 5%"
+      >
+        <div class="col-md-5">
+          <img
+            src="{% static 'images/weed detection.gif' %}"
+            class="card-img-top p-0"
+            alt="..."
+            style="height: 20rem; width: 100%"
+          />
+        </div>
+        <div class="col-md-7 mt-0">
+          <h3 class="mt-5 mb-3">Protect Your Yield: Early Disease Detection</h3>
+          <p class="ms-3 me-3 mb-4">
+            Empower your farm with the future of plant health. Upload an image
+            of your crops, and our AI-powered system will instantly analyze it
+            for signs of disease. Get timely insights to take swift action and
+            safeguard your harvest.
+          </p>
+          <a
+            href="{% url 'disease_detection' %}"
+            class="link-dark link-offset-2 link-underline-opacity-0 mb-3"
+            ><button
+              type="submit"
+              class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12 mx-sm-auto"
+              style="background-color: #ffcc00"
+            >
+              Detect Disease Early
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Cloumn 2 -->
+    <div class="container mt-5">
+      <div
+        class="row"
+        style="background-color: #ffffff; margin-left: -8%; margin-right: 5%"
+      >
+        <div class="col-md-7 mt-0">
+          <h3 class="mt-3 mb-3">
+            Maximize Output: Intelligent Production Insights
+          </h3>
+          <p class="ms-3 me-3 mb-4">
+            Harness the power of data-driven farming. Analyze historical trends,
+            predict future yields, and optimize your production strategies based
+            on real-time insights. Make informed decisions for a thriving
+            harvest season.
+          </p>
+          <a
+            href="{% url 'crops_production_analysis' %}"
+            class="link-dark link-offset-2 link-underline-opacity-0"
+          >
+            <button
+              type="submit"
+              class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12 mx-sm-auto mb-3"
+              style="background-color: #ffcc00"
+            >
+              Analyze Yield Potential
+            </button>
+          </a>
+          <a
+            href="{% url 'crops_production_prediction' %}"
+            class="link-dark link-offset-2 link-underline-opacity-0"
+          >
+            <button
+              type="submit"
+              class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12 mx-sm-auto mb-3"
+              style="background-color: #ffcc00"
+            >
+              Predict Yield Potential
+            </button>
+          </a>
+        </div>
+        <div class="col-md-5">
+          <img
+            src="{% static 'images/crops-preview-animated.gif' %}"
+            class="card-img-top p-0 m-2"
+            alt="..."
+            style="height: 20rem; width: 100%"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Column 3 -->
+    <div class="container mt-5">
+      <div
+        class="row"
+        style="background-color: #ffffff; margin-left: -8%; margin-right: 5%"
+      >
+        <div class="col-md-5">
+          <img
+            src="{% static 'images/agtrend.gif' %}"
+            class="card-img-top p-0 m-2"
+            alt="..."
+            style="height: 23rem; width: 100%"
+          />
+        </div>
+        <div class="col-md-7 mt-0">
+          <h3 class="mt-4 mb-3">
+            Stay Ahead of the Curve: Global Agriculturalist Trends Unveiled
+          </h3>
+          <p class="ms-3 me-3 mb-4">
+            Gain a strategic edge by staying informed about the latest
+            agricultural practices and innovations worldwide. Our platform
+            analyzes data and predicts emerging trends, empowering you to make
+            data-driven decisions for a successful future.
+          </p>
+          <a
+            href="{% url 'population_link' %}"
+            class="link-dark link-offset-2 link-underline-opacity-0"
+          >
+            <button
+              type="submit"
+              class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12 mx-sm-auto mb-3"
+              style="background-color: #ffcc00"
+            >
+              Analyze Agriculturalist Trend
+            </button>
+          </a>
+          <a
+            href="{% url 'predict_population' %}"
+            class="link-dark link-offset-2 link-underline-opacity-0"
+          >
+            <button
+              type="submit"
+              class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12 mx-sm-auto mb-3"
+              style="background-color: #ffcc00"
+            >
+              Predict Agriculturalist Trend
+            </button>
+          </a>
+        </div>
+      </div>
+      <a
+        class="weatherwidget-io"
+        href="https://forecast7.com/en/31d6374d87/amritsar/"
+        data-label_1="AMRITSAR"
+        data-label_2="WEATHER"
+        data-font="Courier New"
+        data-icons="Climacons Animated"
+        data-days="5"
+        data-theme="orange"
+        data-basecolor="#ffcc"
+        data-cloudfill="#ffcc00"
+        style="margin-right: 12%; margin-bottom: 25px"
+        >AMRITSAR WEATHER</a
+      >
+      <script>
+        !(function (d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://weatherwidget.io/js/widget.min.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        })(document, "script", "weatherwidget-io-js");
+      </script>
+    </div>
+
+    <div id="chatbot-container" style="display: none">
+      <div id="chat-container">
+        <!-- Chat messages will be added here -->
+      </div>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    {% endblock %}
+  </body>
+</html>

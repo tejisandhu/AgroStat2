@@ -1,0 +1,193 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .gradient-custom {
+        /* fallback for old browsers */
+        background: #f6d365;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(
+          to right bottom,
+          rgba(246, 211, 101, 1),
+          rgba(253, 160, 133, 1)
+        );
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(
+          to right bottom,
+          rgba(246, 211, 101, 1),
+          rgba(253, 160, 133, 1)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-end m-3">
+
+      <img class="text-end " />Welcome,<strong> {{user.name}}</strong>
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+      /></a>  
+    </div>
+    
+    <section class="vh-50" style="padding-right: 0%">
+      <section class="container"> 
+        <h1 class="mt-5 display-3" >User Profile</h1>
+        <div class="row ">
+          <div class="col-md-4">
+            
+          <div style="margin-left: 10%;">
+            {% if msg ==  'success' %}
+              <img src="{{user.profile_picture.url}}" height="120px" width="120px" style="border-radius: 50%; margin-top: 20px;" >
+              <label for="pimage" style="cursor: pointer;">
+              <img src="{% static 'images\edit.png' %}" style="height: 30px; width: 30px; position: absolute; top: 48%; left: 35%;"></img></label>
+            {% elif user.profile_picture %}
+            <img src="{{user.profile_picture.url}}" height="120px" width="120px" style="border-radius: 50%; margin-top: 20px;">
+            <label for="pimage" style="cursor: pointer;">
+              <img src="{% static 'images\edit.png' %}" style="height: 30px; width: 30px; position: absolute; top: 48%; left: 35%;"></img></label>
+            {% else %}
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" height="120px" width="120px" style="border-radius: 50%; margin-top: 20px;"
+          />
+          <label for="pimage" style="cursor: pointer;">
+            <img src="{% static 'images\edit.png' %}" style="height: 30px; width: 30px; position: absolute; top: 66%; left: 35%;"></img></label>
+          {% endif %}
+          </div>
+          <br>
+          <form method="POST" action="" class="" enctype="multipart/form-data">
+            {% csrf_token %}
+          <input type="file" width="48" height="48" class="mb-4" name="image" accept="image/*" id="pimage" style="display: none; visibility: none;" required/>
+
+          <div class="d-grid gap-2 col-6">
+            <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-12  mx-sm-auto"
+        >
+             Update
+            </button>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row align-items-center mt-3">
+            <div class="col-2 mb-3">
+              <label for="inputPassword6" class="col-form-label fs-4 c1"
+                >Name</label
+              >
+            </div>
+            <div class="col-7 mb-3">
+              <input
+                class="form-control"
+                type="text"
+                value="{{user.name}}"
+                aria-label="Disabled input example"
+                disabled
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-2 mb-3">
+              <label for="inputPassword6" class="col-form-label fs-4 c1"
+                >E-mail</label
+              >
+            </div>
+            <div class="col-7 mb-3">
+              <input
+                class="form-control"
+                type="text"
+                value="{{user.email}}"
+                aria-label="Disabled input example"
+                disabled
+                readonly
+              />
+            </div>
+          </div>
+          {% if user.contact %}
+          <div class="row align-items-center">
+            <div class="col-2 mb-3">
+              <label for="inputPassword6" class="col-form-label fs-4 c1"
+                >Phone</label
+              >
+            </div>
+            <div class="col-7 mb-3">
+              <input
+                class="form-control"
+                type="text"
+                value="{{user.contact}}"
+                aria-label="Disabled input example"
+                disabled
+                readonly
+              />
+            </div>
+          </div>
+          {% endif %}
+          {% if user.age %}
+          <div class="row align-items-center">
+            <div class="col-2 mb-3">
+              <label for="inputPassword6" class="col-form-label fs-4 c1"
+                >DoB</label
+              >
+            </div>
+            <div class="col-7 mb-3">
+              <input
+                class="form-control"
+                type="text"
+                value="{{user.age}}"
+                aria-label="Disabled input example"
+                disabled
+                readonly
+              />
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+          
+        </form>
+        
+    </div>
+      </section>
+    
+    <a
+        class="weatherwidget-io"
+        href="https://forecast7.com/en/31d6374d87/amritsar/"
+        data-label_1="AMRITSAR"
+        data-label_2="WEATHER"
+        data-font="Courier New"
+        data-icons="Climacons Animated"
+        data-days="5"
+        data-theme="orange"
+        data-basecolor="#ffcc"
+        data-cloudfill="#ffcc00"
+        style="margin-right: 20%; margin-bottom: 25px; width: 90%;margin-top: 50px;"
+        >AMRITSAR WEATHER</a
+      >
+      <script>
+        !(function (d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://weatherwidget.io/js/widget.min.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        })(document, "script", "weatherwidget-io-js");
+      </script>
+</section>
+    {% if msg == 1 %}
+    <script type="text/javascript">
+      alert("success");
+    </script>
+    {% endif %}
+    
+  </body>
+</html>
+{% endblock %}

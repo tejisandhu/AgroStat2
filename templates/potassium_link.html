@@ -1,0 +1,90 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<style>
+  .t {
+    color: black;
+  }
+  .t:hover {
+    color: #f0ad4e !important;
+  }
+
+  .d1 {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: xx-large;
+    text-decoration: none;
+  }
+  .element {
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #f0ad4e;
+  }
+</style>
+<body>
+     <div class="text-end m-3">
+          <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+          <a href="{% url 'userprofile_s' %}" required>
+               <img
+                    src="{{user.profile_picture.url}}"
+                    style="height: 70px; width: 70px; border-radius: 50%" /></a>
+     </div>
+     <section class="container" style="padding-right:9%">
+          <!-- <form method="POST" action="" class=""> -->
+          {% csrf_token %}
+
+          <h1 class="mt-0 mb-3 display-3">Potassium Fertilizer Analysis</h1>
+          <div class="row align-items-center mt-3">
+               <div
+                    class="col-12 border border-5 border-black border-opacity-75 border-secondary element">
+                    <a href="{% url 'potassium1' %}" class="d1 t">
+                         Potassium Use Analysis of one Country
+                    </a><br />
+
+                    <a href="{% url 'potassium2' %}" class="d1 t">
+                         Potassium Use Analysis in one Year </a><br />
+                    <a href="{% url 'potassium3' %}" class="d1 t">
+                         Potassium Use Analysis of one Country in a range of
+                         years</a><br />
+                    <a href="{% url 'potassium4' %}" class="d1 t">
+                         Potassium Use Analysis comparison of two Countries
+                    </a>
+                    <br />
+                    <a href="{% url 'potassium5' %}" class="d1 t">
+                         Potassium Use Analysis comparison of three Countries
+                    </a>
+                    <br />
+                    <a href="{% url 'potassium6' %}" class="d1 t">
+                         Potassium Use Analysis comparison of three Countries
+                         in a range of
+                         years
+                    </a>
+                    <br />
+                    <a href="{% url 'potassium7' %}" class="d1 t">
+                         Potassium Use Analysis of top N countries in a year
+                    </a>
+                    <br />
+                    <a href="{% url 'potassium8' %}" class="d1 t">
+                         Potassium Use Analysis World Map
+                    </a>
+               </div>
+          </div>
+          <!-- </form> -->
+     </section>
+
+     {% if msg == 1 %}
+     <script type="text/javascript">
+    alert("success");
+  </script>
+     {% endif %}
+     <script>
+    !(function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://weatherwidget.io/js/widget.min.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    })(document, "script", "weatherwidget-io-js");
+  </script>
+</body>
+
+{% endblock %}

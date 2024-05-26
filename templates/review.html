@@ -1,0 +1,61 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="text-end m-3">
+      <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+      /></a>
+    </div>
+    <section class="container" style="padding-right: 30%">
+      <form method="POST" action="" class="">
+        {% csrf_token %}
+        <h1 class="mt-0 display-3">Reviews</h1>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Reviews"
+            name="ti"
+            required
+          />
+          <label for="floatingInput">Title</label>
+        </div>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+            name="msg"
+            required
+          ></textarea>
+          <label for="floatingTextarea2">Comments</label>
+        </div>
+        <br />
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto"
+        >
+          Submit
+        </button>
+      </form>
+    </section>
+
+    {% if msg == 1 %}
+    <script type="text/javascript">
+      alert("Message Sent");
+    </script>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

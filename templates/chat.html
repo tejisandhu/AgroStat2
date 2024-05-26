@@ -1,0 +1,40 @@
+<div id="chat-container">
+  {% for message in messages %}
+  <p>{{ message.message }}</p>
+
+  {% endfor %}
+</div>
+
+<form id="chat-form" onsubmit="sendMessage(event)">
+  <input
+    type="text"
+    id="user-input"
+    name="user-input"
+    placeholder="Type your message..."
+  />
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  function sendMessage(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    var userMessage = document.getElementById("user-input").value;
+    alert(userMessage);
+    // Send user message to the server
+    fetch("/chat/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": "{{ csrf_token }}",
+      },
+      body: JSON.stringify({ message: userMessage }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Display bot response
+        var chatContainer = document.getElementById("chat-container");
+        chatContainer.innerHTML += "<p>Bot: " + data.response + "</p>";
+      });
+  }
+</script>

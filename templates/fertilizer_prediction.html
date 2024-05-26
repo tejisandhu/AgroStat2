@@ -1,0 +1,56 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fertilizer Prediction</title>
+  </head>
+  <body>
+    <section class="container" style="padding-right: 15%">
+      <form method="POST" action class enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-5 display-3">Nitrogen Use Prediction</h1>
+        <br />
+        <p
+          style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">In
+          this cutting-edge analysis, you'll have the opportunity to select
+          [Country] and specify the number of years for which you want to
+          predict nitrogen usage. Our advanced predictive models harness
+          historical data, climatic factors, and agricultural trends to generate
+          accurate forecasts tailored to your needs. Whether you're planning
+          crop rotations, designing fertilizer strategies, or evaluating
+          environmental impact, our tool provides valuable insights to guide
+          your decisions.</p>
+
+        <select name="country" class="form-select form-select-lg fs-5 mb-4">
+          <option selected class="mb-5">
+            Select a country for nitrogen use prediction
+          </option>
+
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number  "
+            class="form-control"
+            id="floatingInput"
+            placeholder="Upload Image"
+            name="steps" />
+          <label for="floatingInput">Enter the years</label>
+        </div>
+
+        <br />
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto">
+          Check for Use Prediction
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
+{% endblock %}

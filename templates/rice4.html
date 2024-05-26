@@ -1,0 +1,42 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rice Production Analysis</title>
+  </head>
+  <body>
+    <section class="container" style="padding-right: 15%">
+      <form method="POST" action="" class="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-5 display-3">Rice Production Analysis</h1>
+        <br />
+
+        <p style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">From the lush paddies of Southeast Asia to the arid fields of Africa, each region offers a unique perspective on rice cultivation.As you navigate through the form below, select your pair of countries of interest to initiate your comparative analysis.</p>
+
+        <select name="country1" class="form-select form-select-lg mb-4">
+          <option selected>Select a country</option>
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <select name="country2" class="form-select form-select-lg mb-4">
+          <option selected>Select a country</option>
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto"
+        >
+          Enter
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
+{% endblock %}

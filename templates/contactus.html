@@ -1,0 +1,162 @@
+{% extends 'base.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'icofont/icofont.min.css'%}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'css/bootstrap.min.css'%}"
+    />
+  </head>
+  <body>
+    <section class="hero" style="margin-top: -200px">
+      <div>
+        <div class="carousel-inner">
+          <img
+            src="https://ninetheme.com/themes/agro/wp-content/uploads/2019/02/img_2.jpg"
+            class="d-block w-100"
+            style="height: 115vh; filter: brightness(70%)"
+            alt="..."
+          />
+          <div
+            class="carousel-caption text-center"
+            style="
+              /* padding-bottom: 17%; */
+              margin-bottom: 12%;
+              margin-right: 30%;
+              margin-left: -10%;
+            "
+          >
+            <h1 class="display-2 fw-bolder mb-4">Contact Us</h1>
+
+            <p class="mt-2 mb-2">
+              Start a Conversation with the experts. <br />
+            </p>
+            <p class="mt-3">
+              <a
+                href="{% url 'index' %}"
+                class="link-light link-underline-opacity-0 link-offset-2 a1"
+                >Home</a
+              >
+              &#8827; Contact Us
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="container"
+      style="height: 60vh; width: 80%; margin-top: 10%"
+    >
+      <div class="row pt-5 text-center">
+        <div class="col-4">
+          <i class="icofont-location-pin icofont-6x text-warning"></i>
+          <h1 class="fs-1 fw-bold c1">ADDRESS</h1>
+          <p class="pt-2 text-secondary h5">
+            Department of Electronics Technology <br />Guru Nanak Dev University 143001
+          </p>
+        </div>
+        <div class="col-4">
+          <i class="icofont-phone-circle icofont-6x text-warning"></i>
+          <h1 class="fs-1 fw-bold c1">PHONE</h1>
+          <p class="pt-1 text-secondary h5">
+            +91 (708) 731 7163,<br />+1 987 654 3210
+          </p>
+        </div>
+        <div class="col-4">
+          <i class="icofont-email icofont-6x text-warning"></i>
+          <h1 class="fs-1 fw-bold c1">EMAIL</h1>
+          <p class=""></p><a
+            href="mailto:gnduproject89@gmail.com"
+            class="link-dark link-underline-opacity-0 link-offset-2 a1 h5 pt-1 text-secondary"
+            >gnduproject89@gmail.com</a></p>
+          
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row mt-5 mb-5 m-5">
+        <div class="col-6">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d516.6093712548695!2d74.81452871137425!3d31.642585699562073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391965a34ee400df%3A0x79023661f6f96190!2sDepartment%20of%20Electronics!5e0!3m2!1sen!2sin!4v1710704922211!5m2!1sen!2sin"
+            width="100%"
+            height="500"
+            style="border: 0; border-radius: 50px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div
+          class="col-6 p-5 ms"
+          style="
+            border-radius: 50px;
+            height: 500px;
+            background-color:#999999;
+          "
+        >
+          <h1 class="pb-2" style="text-align: center; margin-top: -3%;">GET IN TOUCH</h1>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <p class="cent">
+              Have a question? We'd love to hear from you!
+            </p>
+            <input
+              type="text"
+              placeholder="Enter Your Name"
+              class="form-control border-0 border-bottom border-2 border-secondary"
+              style="background-color: transparent"
+              name="name"
+              id="name"
+              required
+            /><br />
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="form-control border-0 border-bottom border-2 border-secondary"
+              style="background-color: transparent"
+              name="mail"
+              required
+            /><br />
+            <div class="form-floating">
+              <textarea
+                class="form-control border-0 border-bottom border-2 border-secondary"
+                placeholder="Leave a comment here"
+                id="floatingTextarea2"
+                style="background-color: transparent; height: 100px"
+                name="comment"
+                required
+              ></textarea>
+              <label
+                for="floatingTextarea2"
+                style="background-color: transparent"
+                ><span class="background-color: transparent"
+                  >Comments</span
+                ></label
+              >
+
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-warning" type="submit">
+                  Get in Touch Today!
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    {% if msg == 1 %}
+    <script type="text/javascript">
+      alert("Succesfully Submited");
+    </script>
+    {% endif %} {% endblock %}
+  </body>
+</html>

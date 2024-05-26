@@ -1,0 +1,56 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rice Prediction</title>
+  </head>
+  <body>
+    <div class="text-end m-3">
+      <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+      /></a>
+    </div>
+    <section class="container" style="padding-right: 20%">
+      <form method="POST" action="" class="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-0 display-3">Rice Production Prediction</h1>
+        <br />
+        <p style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">Welcome to our predictive analysis platform designed to illuminate the future of rice production in [Country Name]. In this section, we invite you to embark on a journey of anticipation and insight, as we forecast the rice production trends for the upcoming years.</p>
+
+        <select name="country" class="form-select form-select-lg fs-5 mb-4">
+          <option selected class="mb-5">
+            Select a country for rice prediction
+          </option>
+
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <div class="form-floating mb-3">
+          <input
+            type="number  "
+            class="form-control"
+            id="floatingInput"
+            placeholder="Upload Image"
+            name="steps"
+          />
+          <label for="floatingInput">Enter the years</label>
+        </div>
+
+        <br />
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto"
+        >
+          Check for Predicted Production
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base2.html' %} {% block content %} {%load static%}
+
+<section class="container" style="margin-top: 5%; margin-bottom: 5%">
+  {% for i in data %}
+
+  <div class="row">
+    <div class="col-lg-6">
+      <img
+        src="{{i.image1.url}}"
+        class="img-fluid"
+        alt="{{i.crop_head}}"
+        style="width: 640px; height: 340px"
+      />
+    </div>
+    <div class="col-lg-6">
+      <h2 class="fw-bold">{{i.crop_head}}</h2>
+
+      <p class="mb-4 fs-5">{{i.para1}}</p>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-pane fade show active">
+      <p class="mt-3 fs-5">{{i.para2}}</p>
+    </div>
+    <div class="col-lg-6">
+      <img
+        src="{{i.image2.url}}"
+        class="img-fluid"
+        alt="{{i.image2.url}}"
+        style="width: 640px; height: 320px; margin-top: 10%; margin-bottom: 10%"
+      />
+    </div>
+    <p class="mt-3 fs-5">{{i.para3}}</p>
+    <div class="text-end">
+      <a
+        href="{{i.pdf.url}}"
+        target="_blank"
+        class="btn btn-outline-warning text-dark border-0 border-bottom border-3 border-warning rounded-0 ms-3 fs-5"
+        >View PDF <i class="icofont-file-pdf"></i
+      ></a>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="text-end m-3">
+      <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+      /></a>
+    </div>
+
+    <section class="container" style="padding-right: 30%">
+      <form method="POST" action="" class="">
+        {% csrf_token %}
+        <h1 class="mt-0 display-3">Edit Profile</h1>
+        <div class="row align-items-center mt-3">
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >Name</label
+            >
+          </div>
+          <div class="col-7 mb-3">
+            <input
+              class="form-control"
+              type="text"
+              value="{{user.name}}"
+              name="nm"
+            />
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >E-mail</label
+            >
+          </div>
+          <div class="col-7 mb-3">
+            <input
+              class="form-control"
+              type="text"
+              value="{{user.email}}"
+              name="em"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >Phone</label
+            >
+          </div>
+          <div class="col-4 mb-3">
+            <input
+              class="form-control"
+              type="text"
+              value="{{user.contact}}"
+              name="ph"
+            />
+          </div>
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >Address</label
+            >
+          </div>
+          <div class="col-4 mb-3">
+            <textarea
+              class="form-control"
+              type="text"
+              value="{{user.address}}"
+              rows="3"
+              cols="100"
+              name="ad"
+            >
+{{user.address}}</textarea
+            >
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >Gender</label
+            >
+          </div>
+          <div class="col-4 mb-3">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input fs-6"
+                type="radio"
+                name="gn"
+                id="inlineRadio1"
+                value="M"
+                {% if user.gender == "M" %}checked{% endif %}
+              />
+              <label
+                class="form-check-label fs-6"
+                for="inlineRadio1"
+                style="color: black"
+                >Boy</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input fs-6"
+                type="radio"
+                name="gn"
+                id="inlineRadio2"
+                value="F"
+                {% if user.gender == "F" %}checked{% endif %}
+              />
+              <label class="form-check-label fs-6" for="inlineRadio2"
+                >Girl</label
+              >
+            </div>
+          </div>
+          <div class="col-2 mb-3">
+            <label for="inputPassword6" class="col-form-label fs-4 c1"
+              >Born</label
+            >
+          </div>
+          <div class="col-4 mb-3">
+            <input
+              class="form-control"
+              type="date"
+              value="{{user.age}}"
+              name="ag"
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto"
+        >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </section>
+
+    {% if msg == 1 %}
+    <script type="text/javascript">
+      alert("success");
+    </script>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rice Production Analysis</title>
+  </head>
+  <body>
+    <section class="container" style="padding-right: 15%">
+      <form method="POST" action="" class="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-5 display-3">Rice Production Analysis</h1>
+        <br />
+        <p style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">From the terraced hills of Asia to the vast plains of the Americas, each country brings its unique blend of tradition, innovation, and resilience to the table. As you navigate through the form below, select your trio of countries of interest to initiate your comparative analysis.</p>
+
+        <select name="country1" class="form-select form-select-lg mb-4">
+          <option selected>Select first country</option>
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <select name="country2" class="form-select form-select-lg mb-4">
+          <option selected>Select second country</option>
+
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+
+          {% endfor %}
+        </select>
+        <select name="country3" class="form-select form-select-lg mb-4">
+          <option selected>Select third country</option>
+
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+
+          {% endfor %}
+        </select>
+
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto"
+        >
+          Enter
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'sidebar.html' %} {% block content %} {% load static %}
+<html>
+  <head>
+    <title></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'icofont/icofont.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'css/bootstrap.min.css' %}"
+    />
+  </head>
+  <body>
+    <div class="text-end m-3">
+      <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+      <a href="{% url 'userprofile_s' %}" required>
+        <img
+          src="{{user.profile_picture.url}}"
+          style="height: 70px; width: 70px; border-radius: 50%"
+      /></a>
+    </div>
+
+    <div class="" style="padding-right: 15%">
+      <h1 class="mt-0 display-3">Crops Production Prediction</h1>
+      <h4 class="mt-4">Select a crop</h4>
+
+      <div class="container text-center mt-5">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="card" style="width: 18rem; background-color: #c2e0ff">
+              <img
+                src="{% static 'images/rice1.jpg' %}"
+                class="card-img-top p-0"
+                alt="..."
+                style="height: 12rem; width: 18rem"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Predict Your Rice Harvest: Grow More, Worry Less
+                </h5>
+                <p class="card-text">
+                  Analyze historical data and predict future yields
+                </p>
+                <a
+                  href="{% url 'predict_crop_rice' %}"
+                  class="link-dark link-offset-2 link-underline-opacity-0"
+                  ><button
+                    type="submit"
+                    class="btn btn-warning text-dark-emphasis btn-lg d-grid col mx-sm-auto"
+                    style="background-color: #ffcc00"
+                  >
+                    Predict Rice Production
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem; background-color: #c2e0ff">
+              <img
+                src="{% static 'images/maize1.jpg' %}"
+                class="card-img-top"
+                alt="..."
+                style="height: 12rem; width: 18rem"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Unlock the Future of Maize: Predict Your Harvest
+                </h5>
+                <p class="card-text">
+                  Uncover future maize yields with data-driven insights
+                </p>
+                <a
+                  href="{% url 'predict_crop_maize' %}"
+                  class="link-dark link-offset-2 link-underline-opacity-0"
+                >
+                  <button
+                    type="submit"
+                    class="btn btn-warning text-dark-emphasis btn-lg d-grid col mx-sm-auto"
+                    style="background-color: #ffcc00"
+                  >
+                    Foresee Your Maize Production
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem; background-color: #c2e0ff">
+              <img
+                src="{% static 'images/wheat1.jpg' %}"
+                class="card-img-top"
+                alt="..."
+                style="height: 12rem; width: 18rem"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Wheat Harvest in Sight: Predict Your Yields Now!
+                </h5>
+                <p class="card-text">
+                  Gain insights into future wheat production with our predctor
+                </p>
+                <a
+                  href="{% url 'predict_crop_wheat' %}"
+                  class="link-dark link-offset-2 link-underline-opacity-0"
+                >
+                  <button
+                    type="submit"
+                    class="btn text-dark-emphasis btn-lg d-grid col mx-sm-auto"
+                    style="background-color: #ffcc00"
+                  >
+                    Pinpoint your Wheat Production
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <a
+      class="weatherwidget-io"
+      href="https://forecast7.com/en/31d6374d87/amritsar/"
+      data-label_1="AMRITSAR"
+      data-label_2="WEATHER"
+      data-theme="original"
+      style="margin-top: 20px; width: 90%"
+      >AMRITSAR WEATHER</a
+    > -->
+
+    <!-- <script>
+      !(function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://weatherwidget.io/js/widget.min.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      })(document, "script", "weatherwidget-io-js");
+    </script> -->
+
+    {% endblock %}
+  </body>
+</html>

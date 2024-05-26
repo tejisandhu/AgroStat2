@@ -1,0 +1,301 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'icofont/icofont.min.css'%}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'css/bootstrap.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/aos.css'%}" />
+
+    <style>
+      .a1 {
+        text-decoration: none;
+      }
+      .a1:hover {
+        border-bottom: 3px solid #f0ad4e;
+        padding: 2px;
+      }
+      .c1 {
+        color: black;
+      }
+      .c1:hover {
+        color: #f0ad4e;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg rounded"
+      style="background: transparent; z-index: 9999">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample11"
+          aria-controls="navbarsExample11"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <a class="navbar-brand col-lg-3 me-0" href="#"><img
+              src="{% static 'images\Agrostat Logo.png' %}"
+              style="width: 200px" /></a>
+          <ul class="navbar-nav ms-auto col-lg-7 justify-content-lg-end">
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'index' %}"><strong><span
+                    class="a1">Hom</span>e</strong></a>
+            </li>
+
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'Agri_crops' %}"><strong><span
+                    class="a1">Crop</span>s</strong></a>
+            </li>
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'Agri_farmer_scheme' %}"><strong><span
+                    class="a1">Scheme</span>s</strong></a>
+            </li>
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'Agri_uni' %}"><strong><span
+                    class="a1">Universit</span>y</strong></a>
+            </li>
+            <!-- <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'Agri_videos' %}"
+                ><strong><span class="a1">Video</span>s</strong></a
+              >
+            </li> -->
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'Agri_latest_technology' %}"><strong><span
+                    class="a1">Technologie</span>s</strong></a>
+            </li>
+            <li class="nav-item dropdown fs-6">
+              <a
+                class="nav-link link-dark"
+                role="button"
+                href="{% url 'contactus' %}"><strong><span class="a1">Contact
+                    U</span>s</strong></a>
+            </li>
+          </ul>
+
+          <div class="d-lg-flex col-lg-2 justify-content-lg-end">
+            <a href="{% url 'login' %}" class="link-warning ms-3 a1"><i
+                class="icofont-user icofont-2x"></i></a>
+            <a href="{% url 'live' %}" class="link-warning ms-3 a1"><i
+                class="icofont-newspaper icofont-2x"></i></a>
+            <button
+              class="btn btn-outline-warning text-dark border-0 border-bottom border-3 border-warning rounded-0 ms-3 fs-6"
+              id="clickMe"
+              type="button"
+              onclick="window.location.href = '{% url 'e503'%}'">
+              <strong>Subscribe</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+    <footer>
+      <div class="p-3">
+        <div class="row">
+          <div class="col-8 bg-secondary-subtle p-3">
+            <div class="row">
+              <div class="col-2">
+                <div>
+                  <a href="Login_form.html">
+                    <img
+                      src="https://ninetheme.com/themes/agro/wp-content/uploads/2019/02/site_logo.png" />
+                  </a>
+                </div>
+              </div>
+              <div class="col-6 ps-2 mt-3 mb-3">
+                <address class="text-secondary">
+                  <p>
+                    <small><a
+                        href="https://maps.app.goo.gl/n758SzjhJYWRwQ7U6"
+                        class="link-secondary link-offset-2 a1"
+                        target="_blank">
+                        Department of Electronics Technology, Guru Nanak Dev
+                        University 143001</a></small>
+                  </p>
+                  <p><small>+91 (819) 495 0833, +91 (708) 731 7163</small></p>
+                  <p>
+                    <small>
+                      <a
+                        href="mailto:gnduproject89@gmail.com"
+                        class="link-secondary link-offset-2 a1">gnduproject89@gmail.com</a></small>
+                  </p>
+                </address>
+              </div>
+              <div class="col-4 mt-5">
+                <a
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  class="link-secondary m-2 pt-5 link-underline-opacity-0">
+                  <i
+                    class="icofont-facebook icofont-2x a1"
+                    style="color: #4267b2"></i>
+                </a>
+                <a
+                  href="https://twitter.com/AgroStatGNDU"
+                  target="_blank"
+                  class="link-secondary m-2 pt-5 link-underline-opacity-0">
+                  <i class="fa-brands fa-x-twitter fa-2x a1"></i>
+                  <!-- <i class="icofont-brand-nexus icofont-2x text-dark a1"></i> -->
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/tejisandhu07/"
+                  target="_blank"
+                  class="link-info m-2 pt-5 link-underline-opacity-0"><i
+                    class="icofont-linkedin icofont-2x a1"
+                    style="color: #0072b1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 bg-secondary-subtle p-3">
+            <div
+              id="newsletterMessage"
+              class="text-success mt-2"
+              style="display: none"></div>
+            <h5 class="mt-3">
+              <strong>Get a newsletter</strong>
+            </h5>
+            <form id="newsletterForm" class="input-group mb-3 mt-3">
+              <input
+                type="email"
+                id="newsletterEmail"
+                class="form-control border-0 border-bottom border-2 border-dark rounded-0 bg-secondary-subtle"
+                placeholder="Enter your E-mail"
+                name="newsletteremail" />
+              <button
+                class="btn btn-outline-warning text-dark border-0 border-bottom border-3 border-warning rounded-0"
+                type="submit">
+                <strong>Subscribe</strong>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="row bg-secondary-subtle">
+          <div class="col-7 p-3">
+            <div class="footer__item nt-footer-copyright">
+              <span class="__copy text-secondary"><small>Teji Sandhu. All rights
+                  reserved. Created by </small><a
+                  class="link-secondary m-2 pt-5 a1 link-offset-2"
+                  href="#"
+                  target="_blank">Tejbir Singh | Jatin Sharma</a></span>
+            </div>
+          </div>
+          <div class="col-5 p-3 ps-0">
+            <div class="footer__item nt-footer-nav">
+              <nav class="navigation text-lg-end">
+                <a
+                  href="{% url 'index' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Home</a>
+                <a
+                  href="{% url 'Agri_crops' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Crops</a>
+                <a
+                  href="{% url 'Agri_farmer_scheme' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Schemes</a>
+                <a
+                  href="{% url 'Agri_uni' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">University</a>
+                <a
+                  href="{% url 'Agri_latest_technology' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Technology</a>
+                <a
+                  href="{% url 'Agri_dealers' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Dealers</a>
+                <!-- <a
+                  href="{% url 'Agri_videos' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2"
+                  >Videos</a
+                > -->
+                <a
+                  href="{% url 'contactus' %}"
+                  class="link-secondary m-2 pt-5 a1 link-offset-2">Contact
+                  Us</a>
+                <!-- <a href="#" class="link-secondary m-2 pt-5 a1 link-offset-2"
+                  >Get in Touch</a
+                > -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script type="text/javascript">
+      AOS.init();
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/dc51c0fc6c.js"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      document
+        .getElementById("newsletterForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var emailInput = document.getElementById("newsletterEmail");
+          var formData = new FormData();
+          formData.append("newsletteremail", emailInput.value);
+          var messageDiv = document.getElementById("newsletterMessage");
+
+          fetch('{% url "handle_footer" %}', {
+            method: "POST",
+            body: formData,
+            headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+          })
+            .then((response) => response.json()) // Ensure the response is processed as JSON
+            .then((data) => {
+              console.log("Success:", data);
+              messageDiv.textContent = data.message; // Set text of message div to the response message
+              messageDiv.style.display = "block"; // Make the message div visible
+              emailInput.value = ""; // Optionally clear the input after successful submission
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              messageDiv.textContent = "Error submitting form"; // Display error message
+              messageDiv.style.display = "block";
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %} {%load static%}
+<section class="hero" style="margin-top: -200px">
+  <div>
+    <div class="carousel-inner">
+      <img
+        src="https://ninetheme.com/themes/agro/wp-content/uploads/2019/02/img_2.jpg"
+        class="d-block w-100"
+        style="height: 115vh; filter: brightness(70%)"
+        alt="..."
+      />
+      <div
+        class="carousel-caption text-center"
+        style="
+          /* padding-bottom: 17%; */
+          margin-bottom: 12%;
+          margin-right: 30%;
+          margin-left: -10%;
+        "
+      >
+        <h1
+          class="display-2 fw-bolder mb-4"
+          style="
+            font-size: 80px;
+            text-shadow: 2px 2px 5px black;
+            color: whitesmoke;
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-transform: capitalize;
+          "
+        >
+          {{name}} Crops
+        </h1>
+
+        <p class="mt-2 mb-2" style="text-transform: capitalize">
+          {{name}} crops are of different types. Those types are showed in the
+          bottom. <br />
+        </p>
+        <p class="mt-3">
+          <a
+            href="{% url 'index' %}"
+            class="link-light link-underline-opacity-0 link-offset-2 a1"
+            >Home</a
+          >
+          &#8827; Crops
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container" style="margin-top: 10%; margin-bottom: 5%">
+  <div class="row">
+    {% for i in data %}
+    <div class="col-4 p-5">
+      <div
+        class="card text-center border shadow"
+        style="width: 18rem"
+        data-aos="flip-up"
+      >
+        <img
+          src="{{i.image1.url}}"
+          class="card-img-top"
+          alt="{{i.crop_head}}"
+          style="width: auto; height: 200px"
+        />
+        <div class="card-body">
+          <a href="{% url 'crop_detail2' name=i.crop_head %}" class="a1"
+            ><h5 class="card-title c1">{{i.crop_head}}</h5></a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

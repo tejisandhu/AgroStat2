@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %} {%load static%}
+<section class="hero" style="margin-top: -200px">
+  <div>
+    <div class="carousel-inner">
+      <img
+        src="https://ninetheme.com/themes/agro/wp-content/uploads/2019/02/img_2.jpg"
+        class="d-block w-100"
+        style="height: 115vh; filter: brightness(70%)"
+        alt="..."
+      />
+      <div
+        class="carousel-caption text-center"
+        style="
+          /* padding-bottom: 17%; */
+          margin-bottom: 12%;
+          margin-right: 30%;
+          margin-left: -10%;
+        "
+      >
+        <h1 class="display-2 fw-bolder mb-4">International Universities</h1>
+
+        <p class="mt-2 mb-2">
+          Gain the global skills to tackle tomorrow's agricultural
+          challenges.<br />
+        </p>
+        <p class="mt-3">
+          <a
+            href="{% url 'index' %}"
+            class="link-light link-underline-opacity-0 link-offset-2 a1"
+            >Home</a
+          >
+          &#8827; University
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container" style="margin-top: 5%; margin-bottom: 5%">
+  <div class="row">
+    {% for i in data %}
+    <div class="col-4 p-5" data-aos="flip-left">
+      <div class="card border shadow" style="width: 18rem">
+        <img
+          src="{{i.image.url}}"
+          class="card-img-top img-fluid"
+          alt="{{i.name}}"
+          style="
+            width: 80%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="card-body">
+          <a href="{{i.website}}" target="_blank" class="a1"
+            ><h5 class="card-title c1">{{i.name}}</h5></a
+          >
+
+          <p class="card-text">{{i.address|truncatechars:100}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
