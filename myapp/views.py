@@ -3548,7 +3548,7 @@ def sentence_similarity(sentence1, sentence2):
     return similarity_score
 def get_bot_response1(user_message):
      import google.generativeai as genai
-     genai.configure(api_key="AIzaSyC619wTw72mLADW0vbxzrUdjApVWLiydKc")
+     genai.configure(api_key="Google APi Key")
      # Set up the model
      generation_config = {
      "temperature": 0.9,
