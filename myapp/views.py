@@ -3621,7 +3621,7 @@ def chat1(request):
      if request.method == 'POST':
           import google.generativeai as genai
 
-          genai.configure(api_key="AIzaSyCRQbHHFaxgY0OgqXX_6t8OTZyk_8TGO6I")
+          genai.configure(api_key="Google Api Key")
 
           # Set up the model
           generation_config = {
